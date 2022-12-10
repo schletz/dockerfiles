@@ -1,0 +1,44 @@
+dn: cn=custom-attributes,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: custom-attributes
+olcAttributeTypes: {0} (1.2.840.113556.1.4.221 NAME 'sAMAccountName' SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' SINGLE-VALUE)
+olcAttributeTypes: {1} (1.2.840.113556.1.4.146 NAME 'objectSid' SYNTAX '1.3.6.1.4.1.1466.115.121.1.26' SINGLE-VALUE)
+olcObjectClasses: (1.3.6.1.4.1.4203.666.100.1 NAME 'adobject' SUP top AUXILIARY DESC 'Custom attributes class' MAY (sAMAccountName $ objectSid))
+
+dn: ou=employees,dc=mycompany,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: employees
+
+dn: ou=computers,dc=mycompany,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: computers
+
+
+dn:           cn=emp001,ou=employees,dc=mycompany,dc=local
+objectClass:  person
+objectClass:  inetOrgPerson
+objectClass:  adobject
+sn:           Lastname_äöüß1
+givenName:    Firstname1
+mail:         emp001@mycompany.at
+sAMAccountName: emp001
+objectSid:    S-1-5-21-2590565049-4210714436-1631460306-89432
+userPassword: emp001
+
+dn:           cn=emp002,ou=employees,dc=mycompany,dc=local
+objectClass:  person
+objectClass:  inetOrgPerson
+objectClass:  adobject
+sn:           Lastname_äöüß2
+givenName:    Firstname2
+mail:         emp002@mycompany.at
+sAMAccountName: emp002
+objectSid:    S-1-5-21-2590565049-4210714436-1631460306-89433
+userPassword: emp002
+
+dn:           cn=PC-001,ou=computers,dc=mycompany,dc=local
+objectClass:  device
+objectClass:  adobject
+objectSid:    S-1-5-21-2590565049-4210714436-1631460306-89434
